@@ -1,0 +1,14 @@
+.todo-item {
+  padding: 30px;
+  width: 600px;
+  background-color: #eee;
+  opacity: 0.85;
+  border-radius: 30px;
+}
+
+.todo-item-text {
+  margin: 10px 0;
+}
+.btn.active {
+  background-color: greenyellow;
+}

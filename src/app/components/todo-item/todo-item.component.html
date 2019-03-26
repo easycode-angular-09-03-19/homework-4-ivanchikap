@@ -1,0 +1,11 @@
+<ng-container *ngIf="isVisible">
+  <div class="todo-item">
+    <h2>Todo-item {{todo.id}}</h2>
+    <p class="todo-item-text">{{todo.text}}</p>
+    <button class="btn btn-default" (click)="deleteTodo()">Delete todo</button>
+    <button [ngClass]="{active: todo.completed}" class="btn btn-default" (click)="comleteTodo()">Compete todo</button>
+  </div>
+</ng-container>
+
+
+
