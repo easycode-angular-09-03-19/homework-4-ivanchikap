@@ -24,13 +24,22 @@ export class TodosComponent implements OnInit {
       completed: false
     }
   ];
-  isVisible = true;
-
-  isClicked = false;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onOutputDeleteEvent(id: number) {
+    this.todos = this.todos.filter((todo: MyTodo) => todo.id !== id);
+  }
+
+  onOutputCompleteTodo(id: number) {
+    this.todos.forEach((todo) => {
+      if (todo.id === id) {
+        todo.completed = true;
+      }
+    });
   }
 
   completeTodos() {

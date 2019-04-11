@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MyTodo } from '../../interfaces/myTodo';
 
 
@@ -7,32 +7,25 @@ import { MyTodo } from '../../interfaces/myTodo';
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
-export class TodoItemComponent implements OnInit, OnChanges {
+export class TodoItemComponent implements OnInit {
   @Input() todo: MyTodo;
-  isVisible = true;
-  isDelete: boolean;
-  isComplete: boolean;
-  constructor() { }
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-  }
+  @Output() onCompleteEvent = new EventEmitter();
+  @Output() onDeleteEvent = new EventEmitter();
 
   ngOnInit() {
   }
 
   deleteTodo() {
-    this.isDelete = confirm(`Do you want to delete todo with id: ${this.todo.id}?`);
-    if (this.isDelete) {
-      this.isVisible = false;
+    const answer = confirm(`Do you want to delete todo with id: ${this.todo.id}?`);
+    if (answer) {
+      this.onDeleteEvent.emit(this.todo.id);
     }
   }
 
   comleteTodo() {
-    this.isComplete = confirm(`Do you finish todo with id: ${this.todo.id}`);
-    if (this.isComplete) {
-      this.todo.completed = this.isComplete;
+    const isComplete = confirm(`Do you finish todo with id: ${this.todo.id}`);
+    if (isComplete) {
+      this.onCompleteEvent.emit(this.todo.id);
     }
   }
-
 }
