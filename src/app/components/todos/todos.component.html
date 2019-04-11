@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="container text-center">
+    <ng-container *ngFor="let todo of todos">
+      <app-todo-item
+        [todo]="todo"
+        (onDeleteEvent)="onOutputDeleteEvent($event)"
+        (onCompleteEvent)="onOutputCompleteTodo($event)"
+      ></app-todo-item>
+    </ng-container>
+    <button
+      class="btn btn-default"
+      (click)="completeTodos()"
+    >Complete all Todos
+    </button>
+  </div>
+</div>
+
+<!--[ngClass]="{active: isClicked}"-->
+<!--(click)="isClicked = true"-->
+
+
+

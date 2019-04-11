@@ -1,0 +1,12 @@
+app-todo-item + app-todo-item {
+  margin-top: 20px;
+}
+.btn {
+  margin-top: 20px;
+  font-weight: bold;
+  padding: 15px 40px;
+  background-color: greenyellow;
+}
+.btn.active {
+  background-color: darkred;
+}
